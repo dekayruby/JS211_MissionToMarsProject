@@ -12,8 +12,63 @@ const jobTypes = {
 // Your code will go here
 
 
+class CrewMember {
 
+  name;
+  job;
+  specialSkill;
+  ship;
 
+  constructor(iName, iJob, iSkill) {
+    this.name = iName
+    this.job = iJob
+    this.specialSkill = iSkill
+    this.ship = null
+}
+
+enterShip(iShip){
+  this.ship = iShip
+  iShip.crew.push(this)
+}
+
+}
+
+class Ship {
+  
+  name;
+  type;
+  ability;
+  crew;
+
+constructor(iName, iType, iAbility){
+  this.name = iName
+  this.type = iType
+  this.ability = iAbility
+  this.crew = []
+}
+
+missionStatement(){
+  if(this.crew.length > 0){
+    return this.ability
+  }else {
+    return "Can't perform a mission yet."
+  }
+}
+
+}
+
+let crewMember1 = new CrewMember('rick', 'pilot' , 'chemistry')
+let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit' )
+console.log(crewMember1)
+
+crewMember1.enterShip(mav)
+
+// let mission = mav.missionStatement()
+console.log('mav crew:',mav.crew)
+// console.log(mission)
+
+console.log('crew member 1 job :', crewMember1.job)
+console.log('job types object:', Object.keys(jobTypes))
 
 
 
